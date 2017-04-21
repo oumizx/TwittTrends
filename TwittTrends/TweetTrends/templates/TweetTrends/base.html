@@ -206,10 +206,10 @@
                             },
 
                             success: function (json) {
-                                num = num + json.length.hits;
+                                num = json.new_len;
                                 $("#tweet_num").text(num);
                                 var infowindow = new google.maps.InfoWindow();
-                                for(i=0; i<json.length.hits; i++){
+                                for(i=json.old_len; i<json.new_len; i++){
 
                                     var myLatlng = new google.maps.LatLng(parseFloat(json.coordinates[i].lat),parseFloat(json.coordinates[i].lng));
                                     var curr_user_name = json.user_name[i];

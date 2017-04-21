@@ -139,23 +139,22 @@ def polling(Request):
     j = 0
     old_len = Request.GET.get('Num', None)
     print('old: ' + str(old_len))
-    old_len = int(old_len)
+    #old_len = int(old_len)
+    j = 0
     for res in r['hits']['hits']:
-        if (j >= old_len):
-            user_name[j - old_len] = res['_source']['user_name']
-            cor[j - old_len] = res['_source']['coordinates']
-            tweet[j - old_len] = res['_source']['tweet']
-            city[j - old_len] = res['_source']['city']
-            country[j - old_len] = res['_source']['country']
-            sentiment[j - old_len] = res['_source']['sentiment']
+        user_name[j] = res['_source']['user_name']
+        cor[j] = res['_source']['coordinates']
+        tweet[j] = res['_source']['tweet']
+        city[j] = res['_source']['city']
+        country[j] = res['_source']['country']
+        sentiment[j] = res['_source']['sentiment']
         j = j + 1
     hits = len(cor)
-    length = {'hits': hits}
     coordinates = {}
     for i in range(hits):
         coordinates[i] = {'lat': cor[i]['lng'], 'lng': cor[i]['lat']}
     data = {'user_name': user_name, 'tweet': tweet, 'city': city, 'country': country,
-            'coordinates': coordinates, 'length': length, 'sentiment': sentiment}
+            'coordinates': coordinates, 'old_len': old_len, 'new_len': length, 'sentiment': sentiment}
 
     return JsonResponse(data)
 
