@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Tangerine" rel="stylesheet" type="text/css">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <style>
+       html {
+            height: 100%
+        }
+
+        body {
+            width:100%;
+            height:100%;
+            margin:0;
+            padding:0;
+        }
+
+        #container {
+            width: 100%;
+            height: 100%
+        }
+
+        #map {
+            display: block;
+            position:absolute;
+            height:auto;
+            bottom:0;
+            top:0;
+            left:0;
+            right:0;
+            margin-top:50px; /* adjust top margin to your header height */
+        }
+
+
+        .fa-twitter {
+            background:#00aced
+        }
+    </style>
+</head>
+
+<body>
+<div class="container-fluid">
+    <!-- Second navbar for sign in -->
+    <nav class="navbar navbar-fixed-top navbar-default">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">TwittTrends</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-2">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Contact</a></li>
+            <li>
+              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-collapse2" aria-expanded="false" aria-controls="nav-collapse2">Standard Search</a>
+            </li>
+            <li>
+              <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="#nav-search" aria-expanded="false" aria-controls="nav-search">Customer Search</a>
+            </li>
+          </ul>
+          <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse2">
+              <form class="navbar-form navbar-right" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" />
+              </div>
+              <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+            </form>
+          </div>
+          <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-search">
+
+                <form id="topicform" method="POST" class="navbar-form navbar-right">
+              <div class="form-group">
+            {% csrf_token %}
+            <select name="ddlSearchWords"  class="form-control" id="ddlSearchWords">
+                <option value="Basketball" selected>Basketball</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Career">Career</option>
+                <option value="Music">Music</option>
+                <option value="Literature">Literature</option>
+                <option value="Science">Science</option>
+                <option value="Energy">Energy</option>
+                <option value="Fitness">Fitness</option>
+                <option value="Winter">Winter</option>
+                <option value="Fruit">Fruit</option>
+            </select>
+                    </div>
+                 <div class="form-group">
+                <button type="submit" class="btn btn-primary" onsubmit="initMap() display: inline-block;"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                 </div>
+                </form>
+
+          </div>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav><!-- /.navbar -->
+</div><!-- /.container-fluid -->
+
+
+<div id="map"></div>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+    function initMap() {
+            var uluru = {lat: 20, lng: -30};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 3,
+                center: uluru
+            });
+
+            {#---Ajax---#}
+
+            $('#listform').on('submit', function (event) {
+                event.preventDefault();
+                var selectedword = document.getElementById("ddlSearchWords");
+            searchKeyword = selectedword.options[selectedword.selectedIndex].value;
+            console.log(searchKeyword);
+                $.ajax({
+                    url: '/post/',
+                    type: 'POST',
+                    data: {Search: searchKeyword, csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()},
+
+                    success: function (json) {
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 3,
+                            center: uluru
+                        });
+
+                        console.log(json);
+                        console.log(json.length);
+                        console.log(json.coordinates)
+                        for(i=0; i<json.length.hits; i++){
+                            console.log(json.coordinates[i].lat);
+                            console.log(json.coordinates[i].lng);
+                            var myLatlng = new google.maps.LatLng(parseFloat(json.coordinates[i].lat),parseFloat(json.coordinates[i].lng));
+                            console.log(myLatlng);
+
+                            var marker = new google.maps.Marker({
+                                map: map,
+                                position: myLatlng
+
+                            })
+                        }
+
+                    }
+                });
+            });
+        }
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfvBBXdyUnpujGr3-xVnHtLed2Qtz9mXQ&callback=initMap">
+    </script>
+</body>
+</html>
