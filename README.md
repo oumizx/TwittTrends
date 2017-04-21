@@ -43,4 +43,4 @@ URL: http://twitttrends-env.52mg4u6s2j.us-west-2.elasticbeanstalk.com/
 
 - Deploy application on AWS Elastic Beanstalk.
 
-![screenshot](/Users/michael/Documents/CC_assignment/TwittTrends/screenshot.png)
+![alt tag](https://github.com/oumizx/TwittTrends/blob/master/screenshot.png)
