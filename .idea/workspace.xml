@@ -113,10 +113,10 @@
       <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TwittTrends/TweetTrends/templates/TweetTrends/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="64" column="38" lean-forward="true" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
+            <state relative-caret-position="465">
+              <caret line="99" column="73" lean-forward="false" selection-start-line="99" selection-start-column="73" selection-end-line="99" selection-end-column="73" />
               <folding>
-                <marker date="1492817583000" expanded="true" signature="6253:7227" ph="{...}" />
+                <marker date="1492818302000" expanded="true" signature="6254:7228" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -702,7 +702,7 @@
         <state relative-caret-position="1725">
           <caret line="115" column="20" lean-forward="false" selection-start-line="115" selection-start-column="20" selection-end-line="115" selection-end-column="20" />
           <folding>
-            <marker date="1492817583000" expanded="true" signature="6253:7227" ph="{...}" />
+            <marker date="1492818302000" expanded="true" signature="6254:7228" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -797,7 +797,7 @@
         <state relative-caret-position="1725">
           <caret line="115" column="20" lean-forward="false" selection-start-line="115" selection-start-column="20" selection-end-line="115" selection-end-column="20" />
           <folding>
-            <marker date="1492817583000" expanded="true" signature="6253:7227" ph="{...}" />
+            <marker date="1492818302000" expanded="true" signature="6254:7228" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -894,7 +894,7 @@
         <state relative-caret-position="1725">
           <caret line="115" column="20" lean-forward="false" selection-start-line="115" selection-start-column="20" selection-end-line="115" selection-end-column="20" />
           <folding>
-            <marker date="1492817583000" expanded="true" signature="6253:7227" ph="{...}" />
+            <marker date="1492818302000" expanded="true" signature="6254:7228" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -987,7 +987,7 @@
         <state relative-caret-position="1725">
           <caret line="115" column="20" lean-forward="false" selection-start-line="115" selection-start-column="20" selection-end-line="115" selection-end-column="20" />
           <folding>
-            <marker date="1492817583000" expanded="true" signature="6253:7227" ph="{...}" />
+            <marker date="1492818302000" expanded="true" signature="6254:7228" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1154,10 +1154,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TwittTrends/TweetTrends/templates/TweetTrends/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="64" column="38" lean-forward="true" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
+        <state relative-caret-position="465">
+          <caret line="99" column="73" lean-forward="false" selection-start-line="99" selection-start-column="73" selection-end-line="99" selection-end-column="73" />
           <folding>
-            <marker date="1492817583000" expanded="true" signature="6253:7227" ph="{...}" />
+            <marker date="1492818302000" expanded="true" signature="6254:7228" ph="{...}" />
           </folding>
         </state>
       </provider>
