@@ -6,6 +6,8 @@ E-mail : [hz1396@nyu.edu](mailto:hz1396@nyu.edu), [ll3346@nyu.edu](mailto:ll33
 
 URL: http://twitttrends-env.52mg4u6s2j.us-west-2.elasticbeanstalk.com/
 
+Release: https://github.com/oumizx/TwittTrends/releases/tag/1.0.0
+
 ### Overview
 
 **Streaming**
